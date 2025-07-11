@@ -616,3 +616,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
 console.log('🎓 Comunidad Educativa - Pabellón 16B | Sitio web cargado correctamente');
 console.log('🎓 Sitio web de Comunidad Educativa - Funcionalidades adicionales cargadas correctamente');
+
+// Funcionalidad para módulos del curriculum (expandir/contraer)
+document.addEventListener('DOMContentLoaded', function() {
+    const moduleHeaders = document.querySelectorAll('.module-header');
+    
+    moduleHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const moduleItem = this.parentElement;
+            const isExpanded = moduleItem.classList.contains('expanded');
+            
+            // Cerrar todos los módulos primero
+            document.querySelectorAll('.module-item.expanded').forEach(item => {
+                item.classList.remove('expanded');
+            });
+            
+            // Si no estaba expandido, expandir este módulo
+            if (!isExpanded) {
+                moduleItem.classList.add('expanded');
+            }
+        });
+    });
+    
+    // Expandir el primer módulo por defecto
+    const firstModule = document.querySelector('.module-item');
+    if (firstModule) {
+        firstModule.classList.add('expanded');
+    }
+});

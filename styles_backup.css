@@ -1790,23 +1790,23 @@ html, body {
 
 /* Background variations for different courses */
 .solar-bg {
-    background: linear-gradient(135deg, rgba(243, 156, 18, 0.9), rgba(230, 126, 34, 0.9)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
 }
 
 .health-bg {
-    background: linear-gradient(135deg, rgba(39, 174, 96, 0.9), rgba(46, 204, 113, 0.9)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
 }
 
 .legal-bg {
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
 }
 
 .gender-bg {
-    background: linear-gradient(135deg, rgba(142, 68, 173, 0.9), rgba(155, 89, 182, 0.9)), url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
 }
 
 .prevention-bg {
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(192, 57, 43, 0.9)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
 }
 
 /* Course overlay */
@@ -2141,7 +2141,7 @@ html {
 }
 
 .module-group-title {
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
     color: white;
     padding: 1.5rem 2rem;
     margin: 0;
@@ -2172,18 +2172,26 @@ html {
     cursor: pointer;
     background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
     border-bottom: 1px solid #e9ecef;
-    position: relative;
 }
 
-.module-header::after {
-    content: '▼';
-    color: var(--primary-color);
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
+.module-number {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
-.module-item.expanded .module-header::after {
-    transform: rotate(180deg);
+.module-header h4 {
+    flex: 1;
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
 }
 
 .module-duration {
@@ -2196,14 +2204,14 @@ html {
 }
 
 .module-content {
-    padding: 0 2rem;
+    padding: 0 2rem 1.5rem;
     max-height: 0;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .module-item.expanded .module-content {
-    max-height: 500px;
+    max-height: 300px;
     padding: 1.5rem 2rem;
 }
 
@@ -2572,23 +2580,23 @@ html {
 
 /* Background variations for different courses */
 .solar-bg {
-    background: linear-gradient(135deg, rgba(243, 156, 18, 0.9), rgba(230, 126, 34, 0.9)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
 }
 
 .health-bg {
-    background: linear-gradient(135deg, rgba(39, 174, 96, 0.9), rgba(46, 204, 113, 0.9)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
 }
 
 .legal-bg {
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
 }
 
 .gender-bg {
-    background: linear-gradient(135deg, rgba(142, 68, 173, 0.9), rgba(155, 89, 182, 0.9)), url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
 }
 
 .prevention-bg {
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(192, 57, 43, 0.9)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
 }
 
 /* Course overlay */
@@ -2923,7 +2931,7 @@ html {
 }
 
 .module-group-title {
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
     color: white;
     padding: 1.5rem 2rem;
     margin: 0;
@@ -2954,18 +2962,26 @@ html {
     cursor: pointer;
     background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
     border-bottom: 1px solid #e9ecef;
-    position: relative;
 }
 
-.module-header::after {
-    content: '▼';
-    color: var(--primary-color);
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
+.module-number {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
-.module-item.expanded .module-header::after {
-    transform: rotate(180deg);
+.module-header h4 {
+    flex: 1;
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
 }
 
 .module-duration {
@@ -2978,14 +2994,14 @@ html {
 }
 
 .module-content {
-    padding: 0 2rem;
+    padding: 0 2rem 1.5rem;
     max-height: 0;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .module-item.expanded .module-content {
-    max-height: 500px;
+    max-height: 300px;
     padding: 1.5rem 2rem;
 }
 
