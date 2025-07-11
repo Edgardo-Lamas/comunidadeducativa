@@ -1,0 +1,22 @@
+# Forzar que páginas eliminadas muestren 404
+<Files "cursos.html">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<Files "noticias.html">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Headers para evitar caché en desarrollo
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>
+
+# Redirigir páginas eliminadas al inicio
+RewriteEngine On
+RewriteRule ^cursos\.html$ /index.html#cursos [R=301,L]
+RewriteRule ^noticias\.html$ /index.html#noticias [R=301,L]
