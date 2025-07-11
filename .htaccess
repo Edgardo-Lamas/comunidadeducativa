@@ -9,14 +9,31 @@
     Deny from all
 </Files>
 
-# Headers para evitar caché en desarrollo
+# Headers anti-caché MUY agresivos
 <IfModule mod_headers.c>
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
     Header set Pragma "no-cache"
-    Header set Expires 0
+    Header set Expires "0"
+    Header set Vary "*"
+    Header unset ETag
+    Header unset Last-Modified
 </IfModule>
 
-# Redirigir páginas eliminadas al inicio
+# Anti-caché para todos los archivos HTML
+<FilesMatch "\.(html|htm)$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </IfModule>
+</FilesMatch>
+
+# Redirigir páginas eliminadas al inicio con código 410 (Gone)
 RewriteEngine On
-RewriteRule ^cursos\.html$ /index.html#cursos [R=301,L]
-RewriteRule ^noticias\.html$ /index.html#noticias [R=301,L]
+RewriteRule ^cursos\.html$ /index.html#cursos [R=410,L]
+RewriteRule ^noticias\.html$ /index.html#noticias [R=410,L]
+
+# Forzar revalidación para todos los recursos
+<IfModule mod_expires.c>
+    ExpiresActive Off
+</IfModule>
