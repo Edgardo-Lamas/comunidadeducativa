@@ -260,8 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navigator.share) {
         const shareButton = document.createElement('button');
         shareButton.innerHTML = '<i class="fas fa-share-alt"></i> Compartir';
-        shareButton.className = 'btn btn-secondary';
-        shareButton.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 1000;';
+        shareButton.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: #e74c3c; color: white; padding: 12px 18px; border: none; border-radius: 25px; font-weight: 600; box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4); cursor: pointer;';
         
         shareButton.addEventListener('click', function() {
             navigator.share({
