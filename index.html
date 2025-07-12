@@ -1,1 +1,719 @@
 <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Comunidad Educativa - Pabellón 16B</title>
+    <meta name="description" content="Sitio renovado de la Comunidad Educativa del Pabellón 16B - Unidad 9">
+    <style>
+        /* ===== RESET Y BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f39c12"/><circle cx="20" cy="30" r="3" fill="%23ffffff"/></svg>');
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #f39c12;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* ===== SECCIONES ===== */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+            border-radius: 2px;
+        }
+
+        /* ===== CURSOS ===== */
+        .cursos {
+            background: #f8f9fa;
+        }
+
+        .cursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .curso-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .curso-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .curso-header {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curso-header.rcp { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .curso-header.solar { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .curso-header.salud { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+        .curso-header.legal { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+        .curso-header.genero { background: linear-gradient(135deg, #e91e63, #ad1457); }
+        .curso-header.prevencion { background: linear-gradient(135deg, #34495e, #2c3e50); }
+
+        .curso-content {
+            padding: 1.5rem;
+        }
+
+        .curso-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .curso-content p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .curso-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .curso-lugar {
+            color: #95a5a6;
+        }
+
+        .curso-estado {
+            background: #27ae60;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ===== NOTICIAS ===== */
+        .noticias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .noticia-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+            transition: all 0.3s;
+        }
+
+        .noticia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .noticia-fecha {
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .noticia-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .noticia-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* ===== CONTACTO ===== */
+        .contacto {
+            background: #f8f9fa;
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contacto-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .contacto-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contacto-icon {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .contacto-item h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .contacto-item p {
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #f39c12;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 2rem;
+            color: #95a5a6;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(102, 126, 234, 0.95);
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cursos-grid,
+            .noticias-grid,
+            .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== SMOOTH SCROLL ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== AVISO NUEVA VERSION ===== */
+        .nuevo-aviso {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 9999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Aviso Nueva Versión -->
+    <div class="nuevo-aviso">
+        ✨ SITIO RENOVADO
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                🎓 Comunidad Educativa P16B
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#noticias">Noticias</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Comunidad Educativa</h1>
+                <h2>Pabellón 16B - Unidad 9</h2>
+                <p>Fomentando la educación y la cultura como marco principal para la resocialización, ofreciendo cursos y capacitaciones para el desarrollo personal y profesional.</p>
+                <a href="#cursos" class="btn">Ver Cursos</a>
+                <a href="#noticias" class="btn btn-outline">Últimas Noticias</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursos -->
+    <section id="cursos" class="section cursos">
+        <div class="container">
+            <h2 class="section-title">Cursos Disponibles</h2>
+            <div class="cursos-grid">
+                <div class="curso-card" onclick="scrollToContact()">
+                    <div class="curso-header rcp">
+                        ❤️
+                    </div>
+                    <div class="curso-content">
+                        <h3>RCP y Primeros Auxilios</h3>
+                        <p>Reanimación Cardiopulmonar y Primeros Auxilios</p>
+                        <div class="curso-info">
+                            <span class="curso-lugar">SUM Pabellón 16B</span>
+                            <span class="curso-estado">Activo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="curso-card" onclick="scrollToContact()">
+                    <div class="curso-header solar">
+                        ☀️
+                    </div>
+                    <div class="curso-content">
+                        <h3>Paneles Solares</h3>
+                        <p>Instalación y mantenimiento de energía solar</p>
+                        <div class="curso-info">
+                            <span class="curso-lugar">Miércoles</span>
+                            <span class="curso-estado">Activo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="curso-card" onclick="scrollToContact()">
+                    <div class="curso-header salud">
+                        🏥
+                    </div>
+                    <div class="curso-content">
+                        <h3>Promotor de Salud</h3>
+                        <p>Promoción del bienestar y la salud</p>
+                        <div class="curso-info">
+                            <span class="curso-lugar">Biblioteca 16B</span>
+                            <span class="curso-estado">En curso</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="curso-card" onclick="scrollToContact()">
+                    <div class="curso-header legal">
+                        ⚖️
+                    </div>
+                    <div class="curso-content">
+                        <h3>Proceso Penal</h3>
+                        <p>Introducción al Proceso Penal y la pena</p>
+                        <div class="curso-info">
+                            <span class="curso-lugar">Aula principal</span>
+                            <span class="curso-estado">Inscripciones abiertas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="curso-card" onclick="scrollToContact()">
+                    <div class="curso-header genero">
+                        👥
+                    </div>
+                    <div class="curso-content">
+                        <h3>Género y Ley Micaela</h3>
+                        <p>Violencias de género y Ley Micaela</p>
+                        <div class="curso-info">
+                            <span class="curso-lugar">Desde abril</span>
+                            <span class="curso-estado">Activo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="curso-card" onclick="scrollToContact()">
+                    <div class="curso-header prevencion">
+                        🛡️
+                    </div>
+                    <div class="curso-content">
+                        <h3>Prevención Consumos</h3>
+                        <p>Prevención de consumos problemáticos</p>
+                        <div class="curso-info">
+                            <span class="curso-lugar">Salud Penitenciaria</span>
+                            <span class="curso-estado">Disponible</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias -->
+    <section id="noticias" class="section">
+        <div class="container">
+            <h2 class="section-title">Últimas Noticias y Actividades</h2>
+            <div class="noticias-grid">
+                <article class="noticia-card">
+                    <div class="noticia-fecha">06-06-2025</div>
+                    <h3>Charla Prevención Consumos Problemáticos</h3>
+                    <p>En el marco del curso de Promotor de Salud, las psicólogas de Salud Penitenciaria dieron una charla sobre los consumos problemáticos...</p>
+                </article>
+
+                <article class="noticia-card">
+                    <div class="noticia-fecha">21-05-2025</div>
+                    <h3>Curso de Paneles Solares</h3>
+                    <p>Los participantes aprenden las tareas de instalación, mantenimiento y problemas habituales en la instalación de paneles solares...</p>
+                </article>
+
+                <article class="noticia-card">
+                    <div class="noticia-fecha">20-05-2025</div>
+                    <h3>Curso Género y Ley Micaela</h3>
+                    <p>Desde el mes de abril se viene dictando el curso relacionado con violencias, género y la denominada Ley Micaela...</p>
+                </article>
+
+                <article class="noticia-card">
+                    <div class="noticia-fecha">06-05-2025</div>
+                    <h3>Charla Prevención de ITS</h3>
+                    <p>En el marco del curso de Promotor de Salud, se llevó a cabo la clase pertinente a prevenir infecciones de transmisión sexual...</p>
+                </article>
+
+                <article class="noticia-card">
+                    <div class="noticia-fecha">30-04-2025</div>
+                    <h3>Charla Prevención de Incendios</h3>
+                    <p>Personal de bomberos de la Unidad número 9 brindó una charla instructiva sobre prevención de incendios y procedimientos de emergencia...</p>
+                </article>
+
+                <article class="noticia-card">
+                    <div class="noticia-fecha">22-04-2025</div>
+                    <h3>Donación de Libros</h3>
+                    <p>Alimentando el espíritu de fomentar la educación y la cultura, se realizó una donación de libros hacia el Pabellón Literario N°18...</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section contacto">
+        <div class="container">
+            <h2 class="section-title">Información de Contacto</h2>
+            <div class="contacto-grid">
+                <div class="contacto-item">
+                    <div class="contacto-icon">
+                        📍
+                    </div>
+                    <h3>Ubicación</h3>
+                    <p>Pabellón 16B - Unidad 9<br>Servicio Penitenciario Bonaerense</p>
+                </div>
+
+                <div class="contacto-item">
+                    <div class="contacto-icon">
+                        📝
+                    </div>
+                    <h3>Inscripciones</h3>
+                    <p>Oficina de Judiciales<br>Para inscribirse a los cursos disponibles</p>
+                </div>
+
+                <div class="contacto-item">
+                    <div class="contacto-icon">
+                        🕒
+                    </div>
+                    <h3>Horarios</h3>
+                    <p>Consultar horarios específicos<br>según cada curso</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎓 Comunidad Educativa</h3>
+                    <p>Fomentando la educación y la cultura como marco principal para la resocialización.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <p><a href="#inicio">Inicio</a></p>
+                    <p><a href="#cursos">Cursos</a></p>
+                    <p><a href="#noticias">Noticias</a></p>
+                    <p><a href="#contacto">Contacto</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Recursos Externos</h3>
+                    <p><a href="https://www.infoleg.gob.ar/" target="_blank">Infoleg</a></p>
+                    <p><a href="http://www.enciclopedia-juridica.com/" target="_blank">Enciclopedia Jurídica</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Comunidad Educativa - Pabellón 16B, Unidad 9. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación móvil
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll suave a contacto
+        function scrollToContact() {
+            document.getElementById('contacto').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animaciones
+        document.querySelectorAll('.curso-card, .noticia-card, .contacto-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Remover aviso después de 10 segundos
+        setTimeout(() => {
+            const aviso = document.querySelector('.nuevo-aviso');
+            if (aviso) {
+                aviso.style.animation = 'none';
+                aviso.style.opacity = '0';
+                setTimeout(() => aviso.remove(), 300);
+            }
+        }, 10000);
+    </script>
+</body>
+</html>
